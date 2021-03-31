@@ -1,0 +1,42 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'maven-publish'
+apply plugin: 'kotlin-kapt'
+
+dependencies {
+    implementation Dependencies.kotlinStdlib
+
+    implementation(Dependencies.lottie)
+    api(Dependencies.kotlinCoroutines)
+
+    implementation(Dependencies.moshiKotlin)
+    implementation(Dependencies.moshiAdapters)
+    kapt(Dependencies.moshiCodeGen)
+}
+
+task androidSourcesJar(type: Jar) {
+    from android.sourceSets.main.java.source
+    classifier "sources"
+}
+
+artifacts {
+    archives androidSourcesJar
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+
+                groupId = ProjectInfo.metaLottieMavenGroup
+                artifactId = ProjectInfo.metaLottieMavenName
+                version = ProjectInfo.metaLottieMavenVersion
+
+                // Sources
+                artifact androidSourcesJar
+            }
+        }
+    }
+}
