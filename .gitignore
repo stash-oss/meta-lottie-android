@@ -31,17 +31,6 @@ Thumbs.db
 # exclude idea
 .idea/**
 
-# keep run configs
-!.idea/runConfigurations/
-!.idea/runConfigurations/**
-!.idea/runConfigurations.xml
-# keep code style
-!.idea/codeStyles/
-!.idea/codeStyles/**
-# keep dictionaries
-!.idea/dictionaries/
-!.idea/dictionaries/**
-
 # gradle
 .gradle
 

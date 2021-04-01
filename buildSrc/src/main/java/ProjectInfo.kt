@@ -16,7 +16,7 @@ object ProjectInfo {
     const val versionCode = versionMajor * 1000000 + versionMinor * 10000 + versionBuild
     const val versionName = "$versionMajor.$versionMinor.$versionBuild"
 
-    const val metaLottieMavenName = "meta-lottie-android"
+    const val metaLottieMavenName = "meta-lottie"
     const val metaLottieMavenGroup = "com.stash"
     const val metaLottieMavenVersion = versionName
 }
