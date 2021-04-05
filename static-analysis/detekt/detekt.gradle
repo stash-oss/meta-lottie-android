@@ -1,0 +1,38 @@
+apply plugin: "io.gitlab.arturbosch.detekt"
+
+ext.detektSlackReportFile = file("build/reports/detekt-slack-report.json")
+
+detekt {
+    toolVersion = Dependencies.detektVersion
+    input = files("src/")
+    config = files(rootProject.file("static-analysis/detekt/detekt-config.yml"))
+    buildUponDefaultConfig = true
+    // Builds the AST in parallel. Rules are always executed in parallel.
+    // an lead to speedups in larger projects.
+    parallel = true
+
+    reports {
+        xml {
+            enabled = true
+            destination = file("build/reports/detekt.xml")
+        }
+        html {
+            enabled = true
+            destination = file("build/reports/detekt.html")
+        }
+        custom {
+            reportId = 'SlackMessageJsonReport'
+            destination = detektSlackReportFile
+        }
+    }
+}
+
+dependencies {
+    detektPlugins project(Dependencies.detektRules)
+}
+
+tasks.named("detekt") {
+    //custom checks must be compiled before detekt
+    dependsOn(":static-analysis:detekt:rules:assemble")
+    excludes = [".*/resources/.*", ".*/build/.*"]
+}
