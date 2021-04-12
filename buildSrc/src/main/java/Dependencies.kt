@@ -9,6 +9,7 @@ object Dependencies {
     const val androidBuildToolsVersion = "4.1.0"
     const val kotlinVersion = "1.3.72"
     const val kotlinCoroutinesVersion = "1.4.2"
+    const val kotlinxSerializationVersion = "1.0.1"
     const val androidNavigationVersion = "2.3.0"
     const val detektVersion = "1.8.0"
     const val ktlintVersion = "0.36.0"
@@ -38,7 +39,8 @@ object Dependencies {
      */
     val kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
     val kotlinReflect = "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
-    val kotlinCoroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinCoroutinesVersion"
+    val kotlinCoroutines =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinCoroutinesVersion"
 
     /**
      * Android
@@ -60,6 +62,8 @@ object Dependencies {
     val moshiKotlin = "com.squareup.moshi:moshi-kotlin:$moshiVersion"
     val moshiAdapters = "com.squareup.moshi:moshi-adapters:$moshiVersion"
     val moshiCodeGen = "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
+    val kotlinxSerialization =
+        "org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinxSerializationVersion"
 
     /**
      * Testing
