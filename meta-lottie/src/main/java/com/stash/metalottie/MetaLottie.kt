@@ -7,7 +7,6 @@ import com.stash.metalottie.factory.MetaLottieCompositionFactory
 import com.stash.metalottie.model.LottieResource
 import com.stash.metalottie.model.MetaLottieComposition
 import com.stash.metalottie.theme.ThemeValueProvider
-import java.lang.ref.WeakReference
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
@@ -16,6 +15,7 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.lang.ref.WeakReference
 
 /**
  * Meta-Lottie asset loader loader

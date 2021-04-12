@@ -1,0 +1,8 @@
+apply plugin: 'java-gradle-plugin'
+apply plugin: 'kotlin'
+
+dependencies {
+    // Kotlin
+    implementation Dependencies.kotlinStdlib
+    implementation Dependencies.kotlinxSerialization
+}
