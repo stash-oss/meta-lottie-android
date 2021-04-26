@@ -2,7 +2,7 @@ package com.stash.metalottie.plugin.tasks.generator.factory
 
 import com.stash.metalottie.plugin.tasks.generator.model.LottieThemePath
 import com.stash.metalottie.plugin.tasks.generator.model.LottieValue
-import com.stash.metalottie.plugin.tasks.generator.model.ThemeMapper
+import com.stash.metalottie.plugin.tasks.generator.model.theme.ThemeMapper
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject

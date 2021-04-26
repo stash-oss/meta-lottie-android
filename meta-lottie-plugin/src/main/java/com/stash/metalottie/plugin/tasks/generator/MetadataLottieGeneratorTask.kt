@@ -4,7 +4,7 @@ import com.stash.metalottie.plugin.tasks.generator.factory.DefaultThemePathFacto
 import com.stash.metalottie.plugin.tasks.generator.factory.ThemePathFactory
 import com.stash.metalottie.plugin.tasks.generator.model.LottieMetadata
 import com.stash.metalottie.plugin.tasks.generator.model.LottieThemePath
-import com.stash.metalottie.plugin.tasks.generator.model.ThemeMapper
+import com.stash.metalottie.plugin.tasks.generator.model.theme.ThemeMapper
 import org.gradle.api.DefaultTask
 import org.gradle.api.GradleException
 import org.gradle.api.tasks.Input
