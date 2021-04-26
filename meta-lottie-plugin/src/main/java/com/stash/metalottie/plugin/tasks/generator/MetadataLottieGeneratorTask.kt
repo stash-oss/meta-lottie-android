@@ -1,5 +1,6 @@
 package com.stash.metalottie.plugin.tasks.generator
 
+import com.stash.metalottie.plugin.tasks.generator.factory.DefaultThemeMapFactory
 import com.stash.metalottie.plugin.tasks.generator.factory.DefaultThemePathFactory
 import com.stash.metalottie.plugin.tasks.generator.factory.ThemePathFactory
 import com.stash.metalottie.plugin.tasks.generator.model.LottieMetadata
@@ -28,6 +29,7 @@ class MetadataLottieGeneratorTask : DefaultTask() {
     lateinit var themeFile: String
 
     private val themePathFactory: ThemePathFactory = DefaultThemePathFactory()
+    lateinit var themeMapper: DefaultThemeMapFactory
 
     @TaskAction
     fun generate() {
@@ -59,15 +61,8 @@ class MetadataLottieGeneratorTask : DefaultTask() {
          * }
          */
         val themeJson = themeFile.readText()
+        themeMapper = DefaultThemeMapFactory(themeJson)
 
-        // TODO - create mapper with factory from json
-        val themeMapper = object : ThemeMapper {
-            override fun getThemeToken(property: String, colorValue: String): String? {
-                return null
-            }
-        }
-
-        // TODO - Parse theme mapper
         val themePaths: List<LottieThemePath> = themePathFactory.create(lottieJson, themeMapper)
         val metadata = LottieMetadata(themePaths = themePaths)
 
