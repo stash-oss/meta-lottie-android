@@ -1,4 +1,4 @@
-package com.stash.metalottie.plugin.tasks.generator.model
+package com.stash.metalottie.plugin.tasks.generator.model.theme
 
 interface ThemeMapper {
 

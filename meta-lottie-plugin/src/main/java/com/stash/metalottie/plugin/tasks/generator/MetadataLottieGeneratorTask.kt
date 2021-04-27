@@ -1,10 +1,12 @@
 package com.stash.metalottie.plugin.tasks.generator
 
+import com.stash.metalottie.plugin.tasks.generator.factory.DefaultThemeMapFactory
 import com.stash.metalottie.plugin.tasks.generator.factory.DefaultThemePathFactory
 import com.stash.metalottie.plugin.tasks.generator.factory.ThemePathFactory
 import com.stash.metalottie.plugin.tasks.generator.model.LottieMetadata
 import com.stash.metalottie.plugin.tasks.generator.model.LottieThemePath
-import com.stash.metalottie.plugin.tasks.generator.model.ThemeMapper
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import org.gradle.api.DefaultTask
 import org.gradle.api.GradleException
 import org.gradle.api.tasks.Input
@@ -27,6 +29,13 @@ class MetadataLottieGeneratorTask : DefaultTask() {
     )
     lateinit var themeFile: String
 
+    @get:Input
+    @Option(
+        option = "pretty-print",
+        description = "Make it pretty"
+    )
+    var prettyPrint: Boolean = false
+
     private val themePathFactory: ThemePathFactory = DefaultThemePathFactory()
 
     @TaskAction
@@ -35,12 +44,11 @@ class MetadataLottieGeneratorTask : DefaultTask() {
             .takeIf { it.exists() } ?: throw GradleException("Could not find Lottie file")
         val themeFile = File(themeFile)
             .takeIf { it.exists() } ?: throw GradleException("Could not find theme map file")
+        val json = jsonBuilder()
         val metadataFile = File(
             lottieFile.parent,
             "${lottieFile.nameWithoutExtension}_metadata.${lottieFile.extension}"
         )
-
-        val lottieJson = lottieFile.readText()
 
         /**
          * {
@@ -58,21 +66,31 @@ class MetadataLottieGeneratorTask : DefaultTask() {
          *   ]
          * }
          */
-        val themeJson = themeFile.readText()
+        val lottieJson = lottieFile.readText()
+        val themeMapJson = themeFile.readText()
 
-        // TODO - create mapper with factory from json
-        val themeMapper = object : ThemeMapper {
-            override fun getThemeToken(property: String, colorValue: String): String? {
-                return null
+        val themeMapper = DefaultThemeMapFactory(themeMapJson)
+        val themePaths: List<LottieThemePath> = themePathFactory.create(lottieJson, themeMapper)
+
+        val metadata = LottieMetadata(themePaths = themePaths)
+        metadataFile.writeText(json.encodeToString(metadata))
+    }
+
+    fun jsonBuilder(): Json {
+        return if (prettyPrint) {
+            // pretty
+            Json {
+                prettyPrint = true
+                // 2 spaces
+                prettyPrintIndent = "  "
+            }
+        } else {
+            // minify
+            Json {
+                prettyPrint = false
+                // No white space.
+                prettyPrintIndent = ""
             }
         }
-
-        // TODO - Parse theme mapper
-        val themePaths: List<LottieThemePath> = themePathFactory.create(lottieJson, themeMapper)
-        val metadata = LottieMetadata(themePaths = themePaths)
-
-        // TODO - write text to file
-        metadataFile.writeText("")
     }
 }
-
