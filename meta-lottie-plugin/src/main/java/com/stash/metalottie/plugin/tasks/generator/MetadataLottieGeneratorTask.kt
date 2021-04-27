@@ -70,19 +70,21 @@ class MetadataLottieGeneratorTask : DefaultTask() {
 
         val themeMapper = DefaultThemeMapFactory(themeMapJson)
         val themePaths: List<LottieThemePath> = themePathFactory.create(lottieJson, themeMapper)
-        
+
         val metadata = LottieMetadata(themePaths = themePaths)
         metadataFile.writeText(json.encodeToString(metadata))
     }
 
     fun jsonBuilder(): Json {
         return if (prettyPrint) {
+            // pretty
             Json {
                 prettyPrint = true
                 // 2 spaces
                 prettyPrintIndent = "  "
             }
         } else {
+            // minify
             Json {
                 prettyPrint = false
                 // No white space.
