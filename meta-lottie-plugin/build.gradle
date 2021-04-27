@@ -6,4 +6,14 @@ dependencies {
     // Kotlin
     implementation Dependencies.kotlinStdlib
     implementation Dependencies.kotlinxSerialization
+
+    // Testing
+    testImplementation gradleTestKit()
+    testImplementation Dependencies.junit
+    testRuntimeOnly Dependencies.junitEngine
+    testImplementation Dependencies.junitParams
+}
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
 }
