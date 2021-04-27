@@ -5,6 +5,7 @@ Light | Dark
 :---:|:---:
 <img src="/assets/light.gif" alt="Demo Screen Capture" width="300px" /> | <img src="/assets/dark.gif" alt="Demo Screen Capture" width="300px" />
 
+
 ## Installation
 
 Step 1. Add the JitPack repository to your build file
