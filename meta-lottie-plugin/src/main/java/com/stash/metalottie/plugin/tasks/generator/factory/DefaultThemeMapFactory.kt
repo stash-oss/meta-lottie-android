@@ -7,7 +7,7 @@ import com.stash.metalottie.plugin.tasks.generator.model.theme.ThemeMapper
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
-class DefaultThemeMapFactory(val themeMapJson: String) : ThemeMapper {
+class DefaultThemeMapFactory(themeMapJson: String) : ThemeMapper {
     private val sourceMap: Map<String, Map<String, String>>
     init {
         val (strokeColors, fillColors) = Json.decodeFromString<LottieInputThemeMap>(themeMapJson)
