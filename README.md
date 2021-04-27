@@ -11,6 +11,12 @@ Light | Dark
 Step 1. Add the JitPack repository to your build file
 
 ```groovy
+buildscript {
+    dependencies {
+        classpath("com.stash:meta-lottie-plugin:x.x.x")
+    }
+}
+
 allprojects {
   repositories {
     ...
@@ -19,13 +25,15 @@ allprojects {
 }
 ```
 
-Step 2. Add the dependency
+Step 2. Import the plugin at the top of your `/app/build.gradle` and add the dependency
 
 ```groovy
+plugins {
+   id("meta-lottie-plugin")
+}
+
 dependencies {
-  implementation 'com.stash:meta-lottie:${version}'
-  // Plugin is necessary to generate metadata json lottie files.
-  implementation 'com.stash:meta-lottie-plugin:${version}'
+  implementation 'com.stash:meta-lottie:x.x.x'
 }
 ```
 
@@ -66,7 +74,11 @@ class MyThemeValueProvider : ThemeValueProvider {
 
 MetaLottie relies on a metadata file to work. The plugin is used to generate your metadata json files.
 
-TODO: Explain: theme_map.json
+First declare your theme map file like so in your gradle file:
+
+```groovy
+metalottie { themeFile = "/Users/user1/theme_map.json" }
+```
 
 To create a metadata file, import the plugin in your dependency. Then, invoke this command on your lottie file:
 
