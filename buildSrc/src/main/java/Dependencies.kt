@@ -48,7 +48,7 @@ object Dependencies {
     val androidMaterial = "com.google.android.material:material:1.2.0"
     val androidxAppcompat = "androidx.appcompat:appcompat:1.2.0"
     val androidxConstraintLayout = "androidx.constraintlayout:constraintlayout:2.0.0-rc1"
-    val androidxCoreKtx = "androidx.core:core-ktx:1.1.0"
+    val androidxCoreKtx = "androidx.core:core-ktx:1.3.2"
     val androidNavFragment = "androidx.navigation:navigation-fragment-ktx:$androidNavigationVersion"
     val androidNavUi = "androidx.navigation:navigation-ui-ktx:$androidNavigationVersion"
     val androidLintApi = "com.android.tools.lint:lint-api:$androidLintVersion"
@@ -62,9 +62,9 @@ object Dependencies {
     val moshiKotlin = "com.squareup.moshi:moshi-kotlin:$moshiVersion"
     val moshiAdapters = "com.squareup.moshi:moshi-adapters:$moshiVersion"
     val moshiCodeGen = "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
-    val kotlinxSerialization =
-        "org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinxSerializationVersion"
+    val kotlinxSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinxSerializationVersion"
     val kotlinxSerializationPlugin = "org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion"
+
     /**
      * Testing
      */

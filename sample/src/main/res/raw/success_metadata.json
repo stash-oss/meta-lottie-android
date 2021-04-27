@@ -1,0 +1,114 @@
+{
+  "themePaths": [
+    {
+      "keyPath": [
+        "Shape Layer 2",
+        "Shape 1",
+        "Stroke 1"
+      ],
+      "property": "STROKE_COLOR",
+      "themeKey": "background",
+      "color": "009CEB"
+    },
+    {
+      "keyPath": [
+        "circle",
+        "Group 3",
+        "Stroke 1"
+      ],
+      "property": "STROKE_COLOR",
+      "themeKey": "primary",
+      "color": "0B1620"
+    },
+    {
+      "keyPath": [
+        "stroke 2",
+        "Ellipse 41",
+        "Fill 1"
+      ],
+      "property": "FILL_COLOR",
+      "themeKey": "accent",
+      "color": "009CEB"
+    },
+    {
+      "keyPath": [
+        "circSmall 8",
+        "Ellipse 1",
+        "Fill 1"
+      ],
+      "property": "FILL_COLOR",
+      "themeKey": "primary",
+      "color": "000000"
+    },
+    {
+      "keyPath": [
+        "circSmall 7",
+        "Ellipse 1",
+        "Fill 1"
+      ],
+      "property": "FILL_COLOR",
+      "themeKey": "primary",
+      "color": "000000"
+    },
+    {
+      "keyPath": [
+        "circSmall 6",
+        "Ellipse 1",
+        "Fill 1"
+      ],
+      "property": "FILL_COLOR",
+      "themeKey": "primary",
+      "color": "000000"
+    },
+    {
+      "keyPath": [
+        "circSmall 5",
+        "Ellipse 1",
+        "Fill 1"
+      ],
+      "property": "FILL_COLOR",
+      "themeKey": "primary",
+      "color": "000000"
+    },
+    {
+      "keyPath": [
+        "line 4",
+        "Shape 1",
+        "Stroke 1"
+      ],
+      "property": "STROKE_COLOR",
+      "themeKey": "primary",
+      "color": "000000"
+    },
+    {
+      "keyPath": [
+        "line 3",
+        "Shape 1",
+        "Stroke 1"
+      ],
+      "property": "STROKE_COLOR",
+      "themeKey": "primary",
+      "color": "000000"
+    },
+    {
+      "keyPath": [
+        "line 2",
+        "Shape 1",
+        "Stroke 1"
+      ],
+      "property": "STROKE_COLOR",
+      "themeKey": "primary",
+      "color": "000000"
+    },
+    {
+      "keyPath": [
+        "line",
+        "Shape 1",
+        "Stroke 1"
+      ],
+      "property": "STROKE_COLOR",
+      "themeKey": "primary",
+      "color": "000000"
+    }
+  ]
+}
