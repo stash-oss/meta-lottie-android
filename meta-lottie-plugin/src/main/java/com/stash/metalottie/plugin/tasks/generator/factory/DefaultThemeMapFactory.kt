@@ -9,6 +9,7 @@ import kotlinx.serialization.json.Json
 
 class DefaultThemeMapFactory(themeMapJson: String) : ThemeMapper {
     private val sourceMap: Map<String, Map<String, String>>
+
     init {
         val (strokeColors, fillColors) = Json.decodeFromString<LottieInputThemeMap>(themeMapJson)
         sourceMap = mapOf(
@@ -20,7 +21,6 @@ class DefaultThemeMapFactory(themeMapJson: String) : ThemeMapper {
     override fun getThemeToken(property: String, colorValue: String): String? {
         return sourceMap[property]?.get(colorValue)
     }
-
 
     private fun transformThemeMap(values: List<LottieInputThemeMapItem>): Map<String, String> {
         return values.map {

@@ -28,6 +28,7 @@ class MetadataLottieGeneratorTask : DefaultTask() {
         description = "Absolute path to theme map JSON file"
     )
     lateinit var themeFile: String
+
     @get:Input
     @Option(
         option = "pretty-print",
@@ -93,4 +94,3 @@ class MetadataLottieGeneratorTask : DefaultTask() {
         }
     }
 }
-

@@ -64,7 +64,7 @@ object Dependencies {
     val moshiCodeGen = "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
     val kotlinxSerialization =
         "org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinxSerializationVersion"
-    val kotlinxSerializationPlugin ="org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion"
+    val kotlinxSerializationPlugin = "org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion"
     /**
      * Testing
      */
