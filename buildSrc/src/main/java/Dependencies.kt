@@ -9,7 +9,7 @@ object Dependencies {
     const val androidBuildToolsVersion = "4.1.0"
     const val kotlinVersion = "1.3.72"
     const val kotlinCoroutinesVersion = "1.4.2"
-    const val kotlinxSerializationVersion = "1.0.1"
+    const val kotlinxSerializationVersion = "1.1.0"
     const val androidNavigationVersion = "2.3.0"
     const val detektVersion = "1.8.0"
     const val ktlintVersion = "0.36.0"
