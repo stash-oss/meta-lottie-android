@@ -1,5 +1,5 @@
 # Project Name
-Meta-Lottie is a Lottie file preprocessor that enhances its capabilities through metadata.
+Meta-Lottie is a Lottie file preprocessor that enhances capabilities of Lottie through metadata.
 
 Light | Dark
 :---:|:---:
@@ -8,37 +8,103 @@ Light | Dark
 
 ## Installation
 
-Step 1. Add the JitPack repository to your build file
+**Step 1. Add the JitPack repository to your project build file**
 
 ```groovy
-buildscript {
-    dependencies {
-        classpath("com.stash:meta-lottie-plugin:x.x.x")
-    }
-}
-
 allprojects {
   repositories {
-    ...
     maven { url 'https://jitpack.io' }
   }
 }
 ```
 
-Step 2. Import the plugin at the top of your `/app/build.gradle` and add the dependency
+**Step 2. Add the Meta-Lottie dependency**
 
 ```groovy
-plugins {
-   id("meta-lottie-plugin")
-}
-
 dependencies {
   implementation 'com.stash:meta-lottie:x.x.x'
 }
 ```
 
+**Step 3. Add the plugin to your root build gradle**
+```groovy
+buildscript {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+    
+    dependencies {
+        classpath 'com.stash:meta-lottie-plugin:x.x.x'
+    }
+}
+
+apply plugin: 'meta-lottie-plugin'
+```
+
+**Step 4. (Opitional) Add theme definition to the root build gradle**
+
+Configure a theme definition that will be used when generating new Meta-Lottie files.
+
+_Note: You can also manually pass a theme definition when generating a new Meta-Lottie file_
+```groovy
+metalottie {
+   themeFile "<path>/theme_file.json"
+}
+```
+
 ## Usage
 
+### Create a Theme Definition
+Definitions are broken up into `strokes` and `fills`. These define what a shapes line colors are (`strokes`) and what color to use to fill the shape (`fill`).
+
+The token mapping object is made up of a theme token (e.g. material designs `colorPrimary`) and the color matching color hex value.
+```json
+{
+   "strokeTokens": [
+     {
+      "name": "colorPrimary",
+      "color": "0B1620"
+    }
+  ],
+  "fillTokens": [
+    {
+      "name": "colorSecondary",
+      "color": "FFFFFF"
+    }
+  ]
+}
+```
+
+### Generating Meta-Lottie File
+The Meta-Lottie file contains all the additional information needed to enhance a Lottie file (such as theming). To generate this file, you will need to preprocess your Lottie file with the Meta-Lottie plugin by running the `createMetaLottie` Gradle task.
+
+```bash
+./gradlew createMetaLottie --lottieFile="<path>/src/main/res/raw/my_lottie.json" --themeFile="<path>/theme_definition.json"
+```
+_Note: `themeFile` can be omitted if it has been defined in the Gradle configuration as seen in the installation step 4_
+
+The Gradle task will generate a new file with the same name as the Lottie full, but with `metadata` appended (e.g. `my_lottie_metadata.json`).
+
+### Defining a ThemeProvider
+The `ThemeProvider` acts as an interpreter between Lottie and theme metadata stored in the Meta-Lottie file. It will provide concrete color definitions for theme tokens present in your theme definition file.
+
+```kotlin
+class MyThemeValueProvider : ThemeValueProvider {
+    companion object {
+        val THEME_ATTR_MAP = mapOf(
+            "colorPrimary" to R.color.color1,
+            "colorSecondary" to R.color.color_accent_1,
+            "accent" to R.color.color2
+        )
+    }
+
+    override fun getValue(context: Context, key: String): Int? {
+        return THEME_ATTR_MAP[key]?.let { context.getColor(it) }
+    }
+}
+```
+
+### Using Meta-Lottie
 MetaLottie can be called using this function:
 
 ```kotlin
@@ -50,40 +116,6 @@ MetaLottie.loadInto(
         lottieMetadataRawRes = R.raw.my_lottie_metadata
     )
 )
-```
-
-Create your `ThemeValueProvider` class, which holds the mapping from your token to your resource colors.
-
-```kotlin
-class MyThemeValueProvider : ThemeValueProvider {
-    companion object {
-        val THEME_ATTR_MAP = mapOf(
-            "primary" to R.color.color1,
-            "accent" to R.color.color_accent_1,
-            "background" to R.color.color2
-        )
-    }
-
-    override fun getValue(context: Context, key: String): Int? {
-        return THEME_ATTR_MAP[key]?.let { context.getColor(it) }
-    }
-}
-```
-
-## Plugin Usage
-
-MetaLottie relies on a metadata file to work. The plugin is used to generate your metadata json files.
-
-First declare your theme map file like so in your gradle file:
-
-```groovy
-metalottie { themeFile = "/Users/user1/theme_map.json" }
-```
-
-To create a metadata file, import the plugin in your dependency. Then, invoke this command on your lottie file:
-
-```shell script
-./gradlew createMetaLottie --lottieFile="/Users/user1/my_lottie.json"
 ```
 
 ## License
