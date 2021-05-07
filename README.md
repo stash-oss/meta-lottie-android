@@ -1,5 +1,5 @@
 # Project Name
-Meta-Lottie is a Lottie file preprocessor that enhances capabilities of Lottie through metadata.
+Meta-Lottie is a Lottie file preprocessor that enhances the capabilities of Lottie through metadata.
 
 Light | Dark
 :---:|:---:
