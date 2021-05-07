@@ -93,8 +93,8 @@ class MyThemeValueProvider : ThemeValueProvider {
     companion object {
         val THEME_ATTR_MAP = mapOf(
             "colorPrimary" to R.color.color1,
-            "colorSecondary" to R.color.color_accent_1,
-            "accent" to R.color.color2
+            "colorSecondary" to R.color.olor2,
+            "colorAccent" to R.color.color_accent_1c
         )
     }
 
