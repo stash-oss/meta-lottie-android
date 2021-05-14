@@ -1,0 +1,13 @@
+rootProject.name = "Meta-Lottie-Android"
+
+// Library
+include ':meta-lottie'
+include ':meta-lottie-plugin'
+
+// Sample
+include ':sample'
+
+// Others
+include ':static-analysis:android-lint:rules'
+include ':static-analysis:detekt:rules'
+include ':static-analysis:ktlint:rules'

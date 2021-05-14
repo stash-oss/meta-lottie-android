@@ -1,0 +1,72 @@
+build:
+  maxIssues: 0
+#  overriding weight for the custom notification only rules - will not fail the build, will send notification instead
+  weights:
+    stash-notification-rules: 0
+
+console-reports:
+  active: true
+  exclude:
+    - 'ProjectStatisticsReport'
+    - 'ComplexityReport'
+    - 'NotificationReport'
+
+empty-blocks:
+  EmptyFunctionBlock:
+    ignoreOverridden: true
+
+complexity:
+  ComplexMethod:
+    active: false
+  LargeClass:
+    excludes: "**/test/**,**/androidTest/**,**/*.Test.kt,**/*.Spec.kt,**/*.Spek.kt"
+  LongMethod:
+    active: false
+  LongParameterList:
+    active: false
+  TooManyFunctions:
+    active: false
+
+formatting:
+  ImportOrdering:
+    active: true
+  Indentation:
+    active: true
+  MaximumLineLength:
+    active: false
+
+style:
+  ForbiddenComment:
+    active: false
+  MagicNumber:
+    active: true
+    excludes: "**/test/**,**/androidTest/**,**/*.Test.kt,**/*.Spec.kt,**/*.Spek.kt"
+    ignoreNumbers: '-1,0,1,2,100'
+    ignoreHashCodeFunction: true
+    ignorePropertyDeclaration: true
+    ignoreConstantDeclaration: true
+    ignoreCompanionObjectPropertyDeclaration: true
+    ignoreAnnotation: true
+    ignoreNamedArgument: true
+    ignoreEnums: true
+    ignoreRanges: false
+  MaxLineLength:
+    active: false
+  NewLineAtEndOfFile:
+    active: false # must be configured in ktlint .editorconfig if needed
+  UtilityClassWithPublicConstructor:
+    active: false
+  ForbiddenImport:
+    active: true
+    imports: "junit.framework.*,org.mockito.Mockito.(verify|eq|doNothing|doReturn|never|mock|spy|any)"
+
+naming:
+  MemberNameEqualsClassName:
+    active: false
+
+stash-rules:
+  UnusedInject:
+    active: false
+  RxJavaDisposeDisposable:
+    active: true
+    excludes: "**/test/**,**/androidTest/**,**/*.Test.kt,**/*.Spec.kt,**/*.Spek.kt"
