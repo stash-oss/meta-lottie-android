@@ -7,15 +7,12 @@ object Dependencies {
      * Dependency Version
      */
     const val androidBuildToolsVersion = "4.1.0"
-    const val kotlinVersion = "1.3.72"
-    const val kotlinCoroutinesVersion = "1.4.2"
+    const val kotlinVersion = "1.5.0"
+    const val kotlinCoroutinesVersion = "1.5.0"
     const val kotlinxSerializationVersion = "1.1.0"
     const val androidNavigationVersion = "2.3.0"
-    const val detektVersion = "1.8.0"
-    const val ktlintVersion = "0.36.0"
-    const val androidLintVersion = "26.6.0"
     const val junitVersion = "4.12"
-    const val moshiVersion = "1.9.3"
+    const val moshiVersion = "1.12.0"
 
     /**
      * App Dependency Version
@@ -32,7 +29,6 @@ object Dependencies {
      */
     val androidBuildTools = "com.android.tools.build:gradle:$androidBuildToolsVersion"
     val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
-    val detektGradlePlugin = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detektVersion"
 
     /**
      * Kotlin
@@ -51,10 +47,6 @@ object Dependencies {
     val androidxCoreKtx = "androidx.core:core-ktx:1.3.2"
     val androidNavFragment = "androidx.navigation:navigation-fragment-ktx:$androidNavigationVersion"
     val androidNavUi = "androidx.navigation:navigation-ui-ktx:$androidNavigationVersion"
-    val androidLintApi = "com.android.tools.lint:lint-api:$androidLintVersion"
-    val androidLint = "com.android.tools.lint:lint:$androidLintVersion"
-    val androidLintTests = "com.android.tools.lint:lint-tests:$androidLintVersion"
-    val detektRules = ":static-analysis:detekt:rules"
 
     /**
      * Serialization

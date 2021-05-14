@@ -1,9 +1,29 @@
 apply plugin: 'java-gradle-plugin'
 apply plugin: 'kotlin'
 apply plugin: 'kotlinx-serialization'
+apply plugin: 'maven-publish'
 
 dependencies {
     // Kotlin
     implementation Dependencies.kotlinStdlib
     implementation Dependencies.kotlinxSerialization
+}
+
+java {
+    withSourcesJar()
+}
+
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from(components["java"])
+
+                groupId = ProjectInfo.metaLottieMavenGroup
+                artifactId = ProjectInfo.metaLottiePluginMavenName
+                version = ProjectInfo.metaLottieMavenVersion
+            }
+        }
+    }
 }
