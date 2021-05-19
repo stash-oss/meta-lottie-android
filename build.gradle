@@ -10,7 +10,6 @@ buildscript {
     dependencies {
         classpath Dependencies.androidBuildTools
         classpath Dependencies.kotlinGradlePlugin
-        classpath Dependencies.detektGradlePlugin
         classpath Dependencies.kotlinxSerializationPlugin
     }
 }
@@ -66,6 +65,3 @@ subprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
-apply from: rootProject.file("static-analysis/ktlint/ktlint.gradle")
-apply from: rootProject.file("static-analysis/detekt/detekt.gradle")
