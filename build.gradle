@@ -18,7 +18,6 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        google()
     }
 }
 
@@ -51,8 +50,6 @@ subprojects {
                 targetSdkVersion ProjectInfo.targetSdkVersion
                 versionCode ProjectInfo.versionCode
                 versionName ProjectInfo.versionName
-
-                vectorDrawables.useSupportLibrary true
             }
         }
     }
