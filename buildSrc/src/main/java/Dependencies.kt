@@ -6,18 +6,21 @@ object Dependencies {
     /**
      * Dependency Version
      */
-    const val androidBuildToolsVersion = "4.1.0"
-    const val kotlinVersion = "1.5.0"
-    const val kotlinCoroutinesVersion = "1.5.0"
-    const val kotlinxSerializationVersion = "1.1.0"
-    const val androidNavigationVersion = "2.3.0"
+    const val androidBuildToolsVersion = "4.2.1"
+    const val androidxAnnotationVersion = "1.2.0"
+    const val androidxAppcompatVersion ="1.3.0"
+    const val androidxCollectionVersion = "1.1.0"
+    const val androidxCoreKtxVersion = "1.5.0"
     const val junitVersion = "4.12"
+    const val kotlinCoroutinesVersion = "1.4.2"
+    const val kotlinVersion = "1.5.0"
+    const val kotlinxSerializationVersion = "1.1.0"
     const val moshiVersion = "1.12.0"
 
     /**
      * App Dependency Version
      */
-    const val lottieVersion = "3.5.0"
+    const val lottieVersion = "3.7.0"
 
     /**
      * Internal
@@ -34,19 +37,16 @@ object Dependencies {
      * Kotlin
      */
     val kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
-    val kotlinReflect = "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
     val kotlinCoroutines =
         "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinCoroutinesVersion"
 
     /**
      * Android
      */
-    val androidMaterial = "com.google.android.material:material:1.2.0"
-    val androidxAppcompat = "androidx.appcompat:appcompat:1.2.0"
-    val androidxConstraintLayout = "androidx.constraintlayout:constraintlayout:2.0.0-rc1"
-    val androidxCoreKtx = "androidx.core:core-ktx:1.3.2"
-    val androidNavFragment = "androidx.navigation:navigation-fragment-ktx:$androidNavigationVersion"
-    val androidNavUi = "androidx.navigation:navigation-ui-ktx:$androidNavigationVersion"
+    val androidxAnnotation = "androidx.annotation:annotation:$androidxAnnotationVersion"
+    val androidxAppcompat = "androidx.appcompat:appcompat:$androidxAppcompatVersion"
+    val androidxCollection = "androidx.collection:collection:$androidxCollectionVersion"
+    val androidxCoreKtx = "androidx.core:core-ktx:$androidxCoreKtxVersion"
 
     /**
      * Serialization

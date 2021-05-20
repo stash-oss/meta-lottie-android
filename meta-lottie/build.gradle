@@ -4,6 +4,16 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'maven-publish'
 apply plugin: 'kotlin-kapt'
 
+android {
+    defaultConfig {
+        consumerProguardFiles("meta-lottie-proguard-rules.txt")
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
 dependencies {
     implementation Dependencies.kotlinStdlib
 
@@ -13,6 +23,9 @@ dependencies {
     implementation(Dependencies.moshiKotlin)
     implementation(Dependencies.moshiAdapters)
     kapt(Dependencies.moshiCodeGen)
+
+    implementation(Dependencies.androidxAnnotation)
+    implementation(Dependencies.androidxCollection)
 }
 
 task androidSourcesJar(type: Jar) {
