@@ -1,3 +1,5 @@
+[![](https://jitpack.io/v/com.stash/meta-lottie-android.svg)](https://jitpack.io/#com.stash/meta-lottie-android)
+
 # Meta-Lottie
 Meta-Lottie is a Lottie file preprocessor that enhances the capabilities of Lottie through metadata.
 
