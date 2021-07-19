@@ -43,7 +43,7 @@ buildscript {
 apply plugin: 'meta-lottie-plugin'
 ```
 
-**Step 4. (Opitional) Add theme definition to the root build gradle**
+**Step 4. (Optional) Add theme definition to the root build gradle**
 
 Configure a theme definition that will be used when generating new Meta-Lottie files.
 
