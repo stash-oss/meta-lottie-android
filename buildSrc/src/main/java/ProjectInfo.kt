@@ -11,7 +11,7 @@ object ProjectInfo {
      */
     const val versionMajor = 0
     const val versionMinor = 1
-    const val versionBuild = 0
+    const val versionBuild = 1
 
     const val versionCode = versionMajor * 1000000 + versionMinor * 10000 + versionBuild
     const val versionName = "$versionMajor.$versionMinor.$versionBuild"

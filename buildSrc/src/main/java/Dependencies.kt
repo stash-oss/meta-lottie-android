@@ -20,7 +20,7 @@ object Dependencies {
     /**
      * App Dependency Version
      */
-    const val lottieVersion = "3.7.0"
+    const val lottieVersion = "3.7.2"
 
     /**
      * Internal

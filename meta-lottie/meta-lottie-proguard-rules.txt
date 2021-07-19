@@ -1,5 +1,1 @@
--keepclassmembers class com.stash.metalottie.model.LottieThemeProperty {
-    <fields>;
-    public static **[] values();
-    public static ** valueOf(java.lang.String);
-}
+-keep class com.stash.metalottie.model.** { *; }
