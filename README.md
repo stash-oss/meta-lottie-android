@@ -24,7 +24,7 @@ allprojects {
 
 ```groovy
 dependencies {
-  implementation 'com.stash:meta-lottie:x.x.x'
+  implementation 'com.stash.meta-lottie-android:meta-lottie:x.x.x'
 }
 ```
 
@@ -36,7 +36,7 @@ buildscript {
     }
     
     dependencies {
-        classpath 'com.stash:meta-lottie-plugin:x.x.x'
+        classpath 'com.stash.meta-lottie-android:meta-lottie-plugin:x.x.x'
     }
 }
 
