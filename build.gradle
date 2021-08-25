@@ -1,0 +1,64 @@
+import com.android.build.gradle.AppPlugin
+import com.android.build.gradle.LibraryPlugin
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath Dependencies.androidBuildTools
+        classpath Dependencies.kotlinGradlePlugin
+        classpath Dependencies.kotlinxSerializationPlugin
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+subprojects {
+    def baseApplicationId = "com.stash.metalottie"
+    def androidAppClosure = {
+        android {
+            defaultConfig {
+                applicationId = baseApplicationId
+                multiDexEnabled true
+                resConfigs "en"
+            }
+
+            packagingOptions {
+                exclude("META-INF/*.kotlin_module")
+            }
+        }
+    }
+    def androidModuleClosure = {
+        android {
+            compileSdkVersion ProjectInfo.compileSdkVersion
+
+            compileOptions {
+                sourceCompatibility JavaVersion.VERSION_1_8
+                targetCompatibility JavaVersion.VERSION_1_8
+            }
+
+            defaultConfig {
+                minSdkVersion ProjectInfo.minSdkVersion
+                targetSdkVersion ProjectInfo.targetSdkVersion
+                versionCode ProjectInfo.versionCode
+                versionName ProjectInfo.versionName
+            }
+        }
+    }
+
+    plugins.withType(AppPlugin, androidAppClosure)
+    plugins.withType(AppPlugin, androidModuleClosure)
+    plugins.withType(LibraryPlugin, androidModuleClosure)
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

@@ -1,0 +1,8 @@
+rootProject.name = "Meta-Lottie-Android"
+
+// Library
+include ':meta-lottie'
+include ':meta-lottie-plugin'
+
+// Sample
+include ':sample'
