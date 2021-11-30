@@ -6,12 +6,12 @@ object Dependencies {
     /**
      * Dependency Version
      */
-    const val androidBuildToolsVersion = "4.2.1"
+    const val androidBuildToolsVersion = "7.0.2"
     const val androidxAnnotationVersion = "1.2.0"
     const val androidxAppcompatVersion ="1.3.0"
     const val androidxCollectionVersion = "1.1.0"
     const val androidxCoreKtxVersion = "1.5.0"
-    const val junitVersion = "4.12"
+    const val junitVersion = "5.8.2"
     const val kotlinCoroutinesVersion = "1.4.2"
     const val kotlinVersion = "1.5.0"
     const val kotlinxSerializationVersion = "1.1.0"
@@ -60,7 +60,7 @@ object Dependencies {
     /**
      * Testing
      */
-    val junit = "junit:junit:$junitVersion"
+    val junit = "org.junit.jupiter:junit-jupiter:$junitVersion"
 
     /**
      * App Libs

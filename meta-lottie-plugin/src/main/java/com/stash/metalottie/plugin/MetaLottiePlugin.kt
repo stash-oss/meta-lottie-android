@@ -20,7 +20,7 @@ class MetaLottiePlugin : Plugin<Project> {
             "createMetaLottie",
             MetadataLottieGeneratorTask::class.java
         ) { task ->
-            task.themeFile = extension.themeFile.get()
+            task.themeFile = extension.themeFile.getOrElse("")
         }
     }
 }

@@ -40,7 +40,7 @@ buildscript {
     }
 }
 
-apply plugin: 'meta-lottie-plugin'
+apply plugin: 'com.stash.metalottie-plugin'
 ```
 
 **Step 4. (Optional) Add theme definition to the root build gradle**
@@ -50,7 +50,7 @@ Configure a theme definition that will be used when generating new Meta-Lottie f
 _Note: You can also manually pass a theme definition when generating a new Meta-Lottie file_
 ```groovy
 metalottie {
-   themeFile "<path>/theme_file.json"
+   themeFile = "<relative_path>/theme_file.json"
 }
 ```
 
@@ -81,7 +81,7 @@ The token mapping object is made up of a theme token (e.g. material designs `col
 The Meta-Lottie file contains all the additional information needed to enhance a Lottie file (such as theming). To generate this file, you will need to preprocess your Lottie file with the Meta-Lottie plugin by running the `createMetaLottie` Gradle task.
 
 ```bash
-./gradlew createMetaLottie --lottieFile="<path>/src/main/res/raw/my_lottie.json" --themeFile="<path>/theme_definition.json"
+./gradlew createMetaLottie --lottieFile="<relative_path>/src/main/res/raw/my_lottie.json" --themeFile="<relative_path>/theme_definition.json"
 ```
 _Note: `themeFile` can be omitted if it has been defined in the Gradle configuration as seen in the installation step 4_
 
