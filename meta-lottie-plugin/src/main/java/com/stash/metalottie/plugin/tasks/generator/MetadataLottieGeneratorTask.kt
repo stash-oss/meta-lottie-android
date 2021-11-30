@@ -14,7 +14,7 @@ import org.gradle.api.tasks.TaskAction
 import org.gradle.api.tasks.options.Option
 import java.io.File
 
-class MetadataLottieGeneratorTask : DefaultTask() {
+abstract class MetadataLottieGeneratorTask : DefaultTask() {
     @get:Input
     @Option(
         option = "lottieFile",
@@ -52,13 +52,13 @@ class MetadataLottieGeneratorTask : DefaultTask() {
 
         /**
          * {
-         *   "strokeTokens": [
+         *   "strokeColors": [
          *     {
          *       "name": "iconPrimary",
          *       "color": "0B1620"
          *     }
          *   ],
-         *   "fillTokens": [
+         *   "fillColors": [
          *     {
          *       "name": "bgPrimary",
          *       "color": "FFFFFF"
@@ -81,15 +81,11 @@ class MetadataLottieGeneratorTask : DefaultTask() {
             // pretty
             Json {
                 prettyPrint = true
-                // 2 spaces
-                prettyPrintIndent = "  "
             }
         } else {
             // minify
             Json {
                 prettyPrint = false
-                // No white space.
-                prettyPrintIndent = ""
             }
         }
     }

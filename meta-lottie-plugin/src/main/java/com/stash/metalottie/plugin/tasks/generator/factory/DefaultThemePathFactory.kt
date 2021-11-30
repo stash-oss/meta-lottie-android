@@ -172,12 +172,14 @@ class DefaultThemePathFactory : ThemePathFactory {
 
         return when (type) {
             LOTTIE_SHAPE_TYPE_STROKE -> {
-                val colorValue = processColor(shape[LOTTIE_SHAPE_COLOR]!!.jsonObject)
-                listOf(shapeName, LottieValue.ColorValue("STROKE_COLOR", colorValue))
+                processColor(shape[LOTTIE_SHAPE_COLOR]!!.jsonObject)?.let {
+                    listOf(shapeName, LottieValue.ColorValue("STROKE_COLOR", it))
+                } ?: listOf()
             }
             LOTTIE_SHAPE_TYPE_FILL -> {
-                val colorValue = processColor(shape[LOTTIE_SHAPE_COLOR]!!.jsonObject)
-                listOf(shapeName, LottieValue.ColorValue("FILL_COLOR", colorValue))
+                processColor(shape[LOTTIE_SHAPE_COLOR]!!.jsonObject)?.let {
+                    listOf(shapeName, LottieValue.ColorValue("FILL_COLOR", it))
+                } ?: listOf()
             }
             LOTTIE_SHAPE_TYPE_SHAPE_GROUP -> {
                 shape[LOTTIE_SHAPE_GROUP_ITERABLE]!!.jsonArray.flatMap {
@@ -191,23 +193,28 @@ class DefaultThemePathFactory : ThemePathFactory {
     /**
      * Color processing here ignores alpha. May look at including in the meta data in the future
      */
-    private fun processColor(colorObject: JsonObject): String {
-        val kValues = colorObject[LOTTIE_SHAPE_COLOR_KEYFRAMES]!!.jsonArray
+    private fun processColor(colorObject: JsonObject): String? {
+        try {
+            val kValues = colorObject[LOTTIE_SHAPE_COLOR_KEYFRAMES]!!.jsonArray
 
-        var r: Double =
-            round(kValues[0].jsonPrimitive.double * DECIMAL_PLACE_MULTIPLIER) / DECIMAL_PLACE_MULTIPLIER
-        var g: Double =
-            round(kValues[1].jsonPrimitive.double * DECIMAL_PLACE_MULTIPLIER) / DECIMAL_PLACE_MULTIPLIER
-        var b: Double =
-            round(kValues[2].jsonPrimitive.double * DECIMAL_PLACE_MULTIPLIER) / DECIMAL_PLACE_MULTIPLIER
+            var r: Double =
+                round(kValues[0].jsonPrimitive.double * DECIMAL_PLACE_MULTIPLIER) / DECIMAL_PLACE_MULTIPLIER
+            var g: Double =
+                round(kValues[1].jsonPrimitive.double * DECIMAL_PLACE_MULTIPLIER) / DECIMAL_PLACE_MULTIPLIER
+            var b: Double =
+                round(kValues[2].jsonPrimitive.double * DECIMAL_PLACE_MULTIPLIER) / DECIMAL_PLACE_MULTIPLIER
 
-        if (r <= 1 && g <= 1 && b <= 1) {
-            r = round(r * MAX_COLOR_VALUE)
-            g = round(g * MAX_COLOR_VALUE)
-            b = round(b * MAX_COLOR_VALUE)
+            if (r <= 1 && g <= 1 && b <= 1) {
+                r = round(r * MAX_COLOR_VALUE)
+                g = round(g * MAX_COLOR_VALUE)
+                b = round(b * MAX_COLOR_VALUE)
+            }
+
+            val result = (r.toInt() shl 16) or (g.toInt() shl 8) or b.toInt()
+            return String.format("%06X", 0xFFFFFF and result)
+        } catch (e: Exception) {
+            println("Issue detected within lottie file: $colorObject")
+            return null
         }
-
-        val result = (r.toInt() shl 16) or (g.toInt() shl 8) or b.toInt()
-        return String.format("%06X", 0xFFFFFF and result)
     }
 }

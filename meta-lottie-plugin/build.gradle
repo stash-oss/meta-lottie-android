@@ -7,23 +7,35 @@ dependencies {
     // Kotlin
     implementation Dependencies.kotlinStdlib
     implementation Dependencies.kotlinxSerialization
+
+    testImplementation Dependencies.junit
 }
 
 java {
     withSourcesJar()
 }
 
-
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                from(components["java"])
-
-                groupId = ProjectInfo.metaLottieMavenGroup
-                artifactId = ProjectInfo.metaLottiePluginMavenName
-                version = ProjectInfo.metaLottieMavenVersion
-            }
+gradlePlugin {
+    plugins {
+        simplePlugin {
+            id = 'com.stash.metalottie-plugin'
+            implementationClass = 'com.stash.metalottie.plugin.MetaLottiePlugin'
         }
     }
+}
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            from(components["java"])
+
+            groupId = ProjectInfo.metaLottieMavenGroup
+            artifactId = ProjectInfo.metaLottiePluginMavenName
+            version = ProjectInfo.metaLottieMavenVersion
+        }
+    }
+}
+
+test {
+    useJUnitPlatform()
 }

@@ -3,8 +3,8 @@ object ProjectInfo {
      * Android
      */
     const val minSdkVersion = 24
-    const val compileSdkVersion = 29
-    const val targetSdkVersion = 29
+    const val compileSdkVersion = 30
+    const val targetSdkVersion = 30
 
     /**
      * Library Project

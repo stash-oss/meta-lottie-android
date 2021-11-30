@@ -1,0 +1,30 @@
+{
+  "strokeColors": [
+    {
+      "name": "primary",
+      "color": "0B1620"
+    },
+    {
+      "name": "accent",
+      "color": "7BDCF8"
+    },
+    {
+      "name": "background",
+      "color": "009CEB"
+    }
+  ],
+  "fillColors": [
+    {
+      "name": "primary",
+      "color": "000000"
+    },
+    {
+      "name": "accent",
+      "color": "009CEB"
+    },
+    {
+      "name": "background",
+      "color": "0B1620"
+    }
+  ]
+}
