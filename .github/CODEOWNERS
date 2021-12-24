@@ -1,1 +1,9 @@
+####################################
+# DO NOT MODIFY                    #
+# This file is managed by Repoland #
+####################################
+
+# These owners will be the default owners for everything in
+# the repo. Unless a later match takes precedence.
 * @stash-oss/meta-lottie-android-team
+
