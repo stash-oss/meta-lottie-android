@@ -1,6 +1,8 @@
 package com.stash.metalottie
 
 import android.widget.ImageView
+import com.airbnb.lottie.FontAssetDelegate
+import com.airbnb.lottie.TextDelegate
 import com.stash.metalottie.datastore.MetaLottieCache
 import com.stash.metalottie.drawable.MetaLottieThemeDrawable
 import com.stash.metalottie.factory.MetaLottieCompositionFactory
@@ -80,6 +82,8 @@ object MetaLottie {
             val drawable = MetaLottieThemeDrawable(result).apply {
                 repeatCount = lottieResource.repeatCount
                 repeatMode = lottieResource.repeatMode
+                textDelegate = lottieResource.textDelegate?.invoke(result)
+                setFontAssetDelegate(lottieResource.fontAssetDelegate)
                 playAnimation()
             }
 

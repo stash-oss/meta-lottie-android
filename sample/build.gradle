@@ -36,6 +36,7 @@ android {
 dependencies {
     implementation Dependencies.kotlinStdlib
     implementation Dependencies.androidxCoreKtx
+    implementation Dependencies.lottie
     implementation(project(Dependencies.metaLottie))
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
