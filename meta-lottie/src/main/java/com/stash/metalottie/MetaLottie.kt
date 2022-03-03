@@ -80,6 +80,8 @@ object MetaLottie {
             val drawable = MetaLottieThemeDrawable(result).apply {
                 repeatCount = lottieResource.repeatCount
                 repeatMode = lottieResource.repeatMode
+                textDelegate = lottieResource.textDelegate?.invoke(result)
+                setFontAssetDelegate(lottieResource.fontAssetDelegate)
                 playAnimation()
             }
 
