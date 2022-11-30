@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/selectorFragment"
         android:name="com.stash.sample.fragment.SelectorFragment"
-        android:label="SelectorFragment" >
+        android:label="SelectorFragment">
         <action
             android:id="@+id/action_selectorFragment_to_viewBasedFragment"
             app:destination="@id/viewBasedFragment" />
@@ -23,4 +23,5 @@
         android:id="@+id/composeBasedFragment"
         android:name="com.stash.sample.fragment.ComposeBasedFragment"
         android:label="ComposeBasedFragment" />
+
 </navigation>
