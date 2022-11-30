@@ -2,6 +2,7 @@ rootProject.name = "Meta-Lottie-Android"
 
 // Library
 include ':meta-lottie'
+include ':meta-lottie-compose'
 include ':meta-lottie-plugin'
 
 // Sample

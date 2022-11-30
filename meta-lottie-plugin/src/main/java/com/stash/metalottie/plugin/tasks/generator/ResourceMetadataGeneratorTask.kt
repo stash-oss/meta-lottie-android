@@ -1,10 +1,7 @@
 package com.stash.metalottie.plugin.tasks.generator
 
-import com.stash.metalottie.plugin.tasks.generator.factory.DefaultThemeMapFactory
-import com.stash.metalottie.plugin.tasks.generator.factory.DefaultThemePathFactory
-import com.stash.metalottie.plugin.tasks.generator.factory.ThemePathFactory
-import com.stash.metalottie.plugin.tasks.generator.model.LottieMetadata
-import com.stash.metalottie.plugin.tasks.generator.model.LottieThemePath
+import com.stash.metalottie.plugin.tasks.generator.parser.MetadataParser
+import java.io.File
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.gradle.api.DefaultTask
@@ -12,9 +9,8 @@ import org.gradle.api.GradleException
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 import org.gradle.api.tasks.options.Option
-import java.io.File
 
-abstract class MetadataLottieGeneratorTask : DefaultTask() {
+abstract class ResourceMetadataGeneratorTask : DefaultTask() {
     @get:Input
     @Option(
         option = "lottieFile",
@@ -36,8 +32,6 @@ abstract class MetadataLottieGeneratorTask : DefaultTask() {
     )
     var prettyPrint: Boolean = false
 
-    private val themePathFactory: ThemePathFactory = DefaultThemePathFactory()
-
     @TaskAction
     fun generate() {
         val lottieFile = File(project.rootDir, lottieFile)
@@ -50,29 +44,8 @@ abstract class MetadataLottieGeneratorTask : DefaultTask() {
             "${lottieFile.nameWithoutExtension}_metadata.${lottieFile.extension}"
         )
 
-        /**
-         * {
-         *   "strokeColors": [
-         *     {
-         *       "name": "iconPrimary",
-         *       "color": "0B1620"
-         *     }
-         *   ],
-         *   "fillColors": [
-         *     {
-         *       "name": "bgPrimary",
-         *       "color": "FFFFFF"
-         *     }
-         *   ]
-         * }
-         */
-        val lottieJson = lottieFile.readText()
-        val themeMapJson = themeFile.readText()
+        val metadata = MetadataParser.parse(lottieFile, themeFile)
 
-        val themeMapper = DefaultThemeMapFactory(themeMapJson)
-        val themePaths: List<LottieThemePath> = themePathFactory.create(lottieJson, themeMapper)
-
-        val metadata = LottieMetadata(themePaths = themePaths)
         metadataFile.writeText(json.encodeToString(metadata))
     }
 

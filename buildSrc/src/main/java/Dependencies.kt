@@ -6,26 +6,32 @@ object Dependencies {
     /**
      * Dependency Version
      */
-    const val androidBuildToolsVersion = "7.0.2"
+    const val androidBuildToolsVersion = "7.2.2"
     const val androidxAnnotationVersion = "1.2.0"
-    const val androidxAppcompatVersion ="1.3.0"
+    const val androidxAppcompatVersion = "1.5.1"
     const val androidxCollectionVersion = "1.1.0"
+    const val androidxComposeActivityVersion = "1.6.1"
     const val androidxCoreKtxVersion = "1.5.0"
+    const val androidxNavigationVersion = "2.5.3"
+    const val composeBomVersion = "2022.10.00"
     const val junitVersion = "5.8.2"
     const val kotlinCoroutinesVersion = "1.4.2"
-    const val kotlinVersion = "1.5.0"
+    const val kotlinPoetVersion = "1.12.0"
     const val kotlinxSerializationVersion = "1.1.0"
-    const val moshiVersion = "1.12.0"
+    const val kotlinVersion = "1.7.20"
+    const val materialVersion = "1.7.0"
+    const val moshiVersion = "1.14.0"
 
     /**
      * App Dependency Version
      */
-    const val lottieVersion = "3.7.2"
+    const val lottieVersion = "5.2.0"
 
     /**
      * Internal
      */
     val metaLottie = ":meta-lottie"
+    val metaLottieCompose = ":meta-lottie-compose"
 
     /**
      * Gradle Plugins
@@ -47,6 +53,10 @@ object Dependencies {
     val androidxAppcompat = "androidx.appcompat:appcompat:$androidxAppcompatVersion"
     val androidxCollection = "androidx.collection:collection:$androidxCollectionVersion"
     val androidxCoreKtx = "androidx.core:core-ktx:$androidxCoreKtxVersion"
+    val material = "com.google.android.material:material:$materialVersion"
+    val androidxNavigationFragment =
+        "androidx.navigation:navigation-fragment-ktx:$androidxNavigationVersion"
+    val androidxNavigationUi = "androidx.navigation:navigation-ui-ktx:$androidxNavigationVersion"
 
     /**
      * Serialization
@@ -54,7 +64,8 @@ object Dependencies {
     val moshiKotlin = "com.squareup.moshi:moshi-kotlin:$moshiVersion"
     val moshiAdapters = "com.squareup.moshi:moshi-adapters:$moshiVersion"
     val moshiCodeGen = "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
-    val kotlinxSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinxSerializationVersion"
+    val kotlinxSerialization =
+        "org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinxSerializationVersion"
     val kotlinxSerializationPlugin = "org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion"
 
     /**
@@ -66,4 +77,19 @@ object Dependencies {
      * App Libs
      */
     val lottie = "com.airbnb.android:lottie:$lottieVersion"
+    val lottieCompose = "com.airbnb.android:lottie-compose:$lottieVersion"
+
+    /**
+     * Compose
+     */
+    val composeBom = "androidx.compose:compose-bom:$composeBomVersion"
+    val composeUi = "androidx.compose.ui:ui"
+    val composeMaterial = "androidx.compose.material:material"
+    val composePreview = "androidx.compose.ui:ui-tooling-preview"
+    val composeActivity = "androidx.activity:activity-compose:$androidxComposeActivityVersion"
+
+    /**
+     * Codegen
+     */
+    val kotlinPoet = "com.squareup:kotlinpoet:$kotlinPoetVersion"
 }

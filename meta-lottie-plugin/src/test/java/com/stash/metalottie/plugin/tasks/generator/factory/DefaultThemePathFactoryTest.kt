@@ -1,18 +1,30 @@
 package com.stash.metalottie.plugin.tasks.generator.factory
 
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Test
+import com.stash.metalottie.plugin.tasks.generator.parser.ThemeParser
+import java.io.File
 import java.nio.charset.StandardCharsets
 import java.nio.file.Files
 import java.nio.file.Paths
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
 
 internal class DefaultThemePathFactoryTest {
 
     @Test
     fun `test theme path construction`() {
-        val lottieJson = String(Files.readAllBytes(Paths.get(this::class.java.classLoader!!.getResource("test_lottie.json")!!.toURI())), StandardCharsets.UTF_8)
-        val themeMapJson = String(Files.readAllBytes(Paths.get(this::class.java.classLoader!!.getResource("test_theme.json")!!.toURI())), StandardCharsets.UTF_8)
-        val themeMapper = DefaultThemeMapFactory(themeMapJson)
+        val lottieJson = String(
+            Files.readAllBytes(
+                Paths.get(
+                    this::class.java.classLoader!!.getResource("test_lottie.json")!!.toURI()
+                )
+            ), StandardCharsets.UTF_8
+        )
+        val themeFile = File(
+            this::class.java.classLoader!!
+                .getResource("test_theme.json")!!
+                .toURI()
+        )
+        val themeMapper = DefaultThemeMapFactory(ThemeParser.parse(themeFile))
         val factory = DefaultThemePathFactory()
 
         val result = factory.create(lottieJson, themeMapper)
