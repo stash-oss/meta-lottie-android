@@ -126,9 +126,12 @@ class ComposeThemeWriter {
             .returns(Int::class.asClassName().copy(nullable = true))
             .beginControlFlow("return when (key) {")
             .apply {
-                colors.forEach { item ->
-                    addStatement("%S -> TODO()", item.name)
-                }
+                colors
+                    .map { it.name }
+                    .toSet()
+                    .forEach { item ->
+                        addStatement("%S -> TODO()", item)
+                    }
             }
             .addStatement("else -> null")
             .endControlFlow()

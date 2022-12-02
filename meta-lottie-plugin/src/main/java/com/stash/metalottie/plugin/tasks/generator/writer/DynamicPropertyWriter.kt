@@ -39,6 +39,14 @@ class DynamicPropertiesWriter {
             "com.stash.metalottie.compose",
             "LocalMetaLottie"
         )
+        private val colorValueIdentifierClassName = ClassName(
+            "com.stash.metalottie.compose",
+            "ColorValueIdentifier"
+        )
+        private val colorValueTypeClassName = ClassName(
+            "com.stash.metalottie.compose",
+            "ColorType"
+        )
     }
 
     fun write(
@@ -51,7 +59,8 @@ class DynamicPropertiesWriter {
         val namespace = outDirectory.absolutePath
             .substring(startIndex.range.last + 1)
             .replace(File.separator, ".")
-        val sourceDirectory = File(outDirectory.absolutePath.substring(0, startIndex.range.first))
+        val sourceDirectory =
+            File(outDirectory.absolutePath.substring(0, startIndex.range.last + 1))
 
         buildFileSpec(metadata, name, namespace).writeTo(sourceDirectory)
     }
@@ -94,7 +103,9 @@ class DynamicPropertiesWriter {
                                 generateDynamicProperty(themePath),
                                 rememberLottieDynamicPropertyClassName,
                                 lottiePropertyClassName,
-                                localMetaLottieMemberName
+                                localMetaLottieMemberName,
+                                colorValueIdentifierClassName,
+                                colorValueTypeClassName
                             )
                         }
 
@@ -111,17 +122,24 @@ class DynamicPropertiesWriter {
             "STROKE_COLOR" -> "%T.STROKE_COLOR"
             else -> "%T.COLOR"
         }
+        val identifierType = when (themePath.property) {
+            "STROKE_COLOR" -> "%T.STROKE"
+            else -> "%T.FILL"
+        }
         val keyPath = themePath.keyPath.joinToString(separator = ",") { "\"$it\"" }
+
+        // todo - ColorValueIdentifierClassName
+
         val value =
-            "%M.current.themeColorProvider.getValue(\"${themePath.themeKey}\")·?:·0x${themePath.color}"
+            "%M.current.themeColorProvider.getValue(%T($identifierType,·\"${themePath.themeKey}\"))·?:·0x${themePath.color}"
 
         return """
             |
-            |  %T(
-            |    property·=·$propertyType,
-            |    value·=·$value,
-            |    keyPath·=·arrayOf($keyPath)
-            |  ),
+            |··%T(
+            |····property·=·$propertyType,
+            |····value·=·$value,
+            |····keyPath·=·arrayOf($keyPath)
+            |··),
             """.trimMargin()
     }
 }
