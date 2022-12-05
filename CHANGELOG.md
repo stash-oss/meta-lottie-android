@@ -4,6 +4,7 @@ Released on 2022-12-06.
 #### Added
 - Update Meta-Lottie Plugin with compose theme color provider support
 - Update Meta-Lottie Plugin with compose DynamicProperty generation support
+- Added Compose artifact with Meta-Lottie local composition and theme color provider definitions
 
 ## [0.1.1](https://github.com/stash-sso/meta-lottie-android/tag/0.1.1)
 Released on 2021-11-30.
