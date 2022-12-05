@@ -20,6 +20,13 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.3.2"
     }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
 }
 
 dependencies {
@@ -33,15 +40,6 @@ dependencies {
     implementation Dependencies.lottieCompose
 }
 
-task androidSourcesJar(type: Jar) {
-    from android.sourceSets.main.java.source
-    classifier "sources"
-}
-
-artifacts {
-    archives androidSourcesJar
-}
-
 afterEvaluate {
     publishing {
         publications {
@@ -51,9 +49,6 @@ afterEvaluate {
                 groupId = ProjectInfo.metaLottieMavenGroup
                 artifactId = ProjectInfo.metaLottieComposeMavenName
                 version = ProjectInfo.metaLottieMavenVersion
-
-                // Sources
-                artifact androidSourcesJar
             }
         }
     }

@@ -12,6 +12,13 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
 }
 
 dependencies {
@@ -28,15 +35,6 @@ dependencies {
     implementation(Dependencies.androidxCollection)
 }
 
-task androidSourcesJar(type: Jar) {
-    from android.sourceSets.main.java.source
-    classifier "sources"
-}
-
-artifacts {
-    archives androidSourcesJar
-}
-
 afterEvaluate {
     publishing {
         publications {
@@ -46,9 +44,6 @@ afterEvaluate {
                 groupId = ProjectInfo.metaLottieMavenGroup
                 artifactId = ProjectInfo.metaLottieMavenName
                 version = ProjectInfo.metaLottieMavenVersion
-
-                // Sources
-                artifact androidSourcesJar
             }
         }
     }
