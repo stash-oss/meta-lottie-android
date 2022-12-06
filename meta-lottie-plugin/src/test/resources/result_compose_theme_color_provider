@@ -1,0 +1,32 @@
+package com.stash.metalottie.plugin
+
+import androidx.compose.runtime.Composable
+import com.stash.metalottie.compose.ColorType
+import com.stash.metalottie.compose.ColorValueIdentifier
+import com.stash.metalottie.compose.ThemeColorProvider
+import kotlin.Int
+import kotlin.String
+
+public object MyThemeColorProvider : ThemeColorProvider {
+  @Composable
+  public override fun getValue(identifier: ColorValueIdentifier): Int? = when (identifier.type) {
+    ColorType.STROKE -> getStrokeColorValue(key = identifier.key)
+    ColorType.FILL -> getFillColorValue(key = identifier.key)
+  }
+
+  @Composable
+  private fun getStrokeColorValue(key: String): Int? = when (key) {
+    "primary" -> TODO()
+    "accent" -> TODO()
+    "background" -> TODO()
+    else -> null
+  }
+
+  @Composable
+  private fun getFillColorValue(key: String): Int? = when (key) {
+    "primary" -> TODO()
+    "accent" -> TODO()
+    "background" -> TODO()
+    else -> null
+  }
+}

@@ -5,12 +5,12 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        jcenter()
     }
     dependencies {
         classpath Dependencies.androidBuildTools
         classpath Dependencies.kotlinGradlePlugin
         classpath Dependencies.kotlinxSerializationPlugin
+        classpath Dependencies.kotlinGradlePlugin
     }
 }
 

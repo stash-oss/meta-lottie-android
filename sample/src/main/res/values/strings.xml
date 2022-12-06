@@ -2,4 +2,12 @@
     <string name="app_name">Sample</string>
 
     <string name="enable_dark_mode">Enable dark mode</string>
+
+    <string name="selector_button_view_text">View Based Sample</string>
+    <string name="selector_button_compose_text">Compose Based Sample</string>
+
+    <string name="view_fragment_title">View Based Sample</string>
+    <string name="compose_fragment_title">Compose Based Sample</string>
+
+    <string name="navigation_navigation_description">back arrow</string>
 </resources>

@@ -8,6 +8,8 @@ dependencies {
     implementation Dependencies.kotlinStdlib
     implementation Dependencies.kotlinxSerialization
 
+    implementation Dependencies.kotlinPoet
+
     testImplementation Dependencies.junit
 }
 

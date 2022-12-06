@@ -4,17 +4,14 @@ import com.stash.metalottie.plugin.tasks.generator.model.LottieThemeProperty
 import com.stash.metalottie.plugin.tasks.generator.model.theme.LottieInputThemeMap
 import com.stash.metalottie.plugin.tasks.generator.model.theme.LottieInputThemeMapItem
 import com.stash.metalottie.plugin.tasks.generator.model.theme.ThemeMapper
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.json.Json
 
-class DefaultThemeMapFactory(themeMapJson: String) : ThemeMapper {
+class DefaultThemeMapFactory(themeMap: LottieInputThemeMap) : ThemeMapper {
     private val sourceMap: Map<String, Map<String, String>>
 
     init {
-        val (strokeColors, fillColors) = Json.decodeFromString<LottieInputThemeMap>(themeMapJson)
         sourceMap = mapOf(
-            LottieThemeProperty.STROKE_COLOR.keyName to transformThemeMap(strokeColors),
-            LottieThemeProperty.FILL_COLOR.keyName to transformThemeMap(fillColors)
+            LottieThemeProperty.STROKE_COLOR.keyName to transformThemeMap(themeMap.strokeColors),
+            LottieThemeProperty.FILL_COLOR.keyName to transformThemeMap(themeMap.fillColors)
         )
     }
 

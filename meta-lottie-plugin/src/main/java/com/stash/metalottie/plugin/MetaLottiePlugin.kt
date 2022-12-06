@@ -1,6 +1,8 @@
 package com.stash.metalottie.plugin
 
-import com.stash.metalottie.plugin.tasks.generator.MetadataLottieGeneratorTask
+import com.stash.metalottie.plugin.tasks.generator.ComposeDynamicPropertiesGeneratorTask
+import com.stash.metalottie.plugin.tasks.generator.ComposeThemeGeneratorTask
+import com.stash.metalottie.plugin.tasks.generator.ResourceMetadataGeneratorTask
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.provider.Property
@@ -18,7 +20,21 @@ class MetaLottiePlugin : Plugin<Project> {
 
         project.tasks.register(
             "createMetaLottie",
-            MetadataLottieGeneratorTask::class.java
+            ResourceMetadataGeneratorTask::class.java
+        ) { task ->
+            task.themeFile = extension.themeFile.getOrElse("")
+        }
+
+        project.tasks.register(
+            "createMetaLottieCompose",
+            ComposeDynamicPropertiesGeneratorTask::class.java
+        ) { task ->
+            task.themeFile = extension.themeFile.getOrElse("")
+        }
+
+        project.tasks.register(
+            "createMetaLottieComposeTheme",
+            ComposeThemeGeneratorTask::class.java
         ) { task ->
             task.themeFile = extension.themeFile.getOrElse("")
         }

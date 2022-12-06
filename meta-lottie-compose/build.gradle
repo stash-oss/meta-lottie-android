@@ -13,6 +13,14 @@ android {
         jvmTarget = "1.8"
     }
 
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.3.2"
+    }
+
     publishing {
         singleVariant("release") {
             withSourcesJar()
@@ -24,15 +32,12 @@ android {
 dependencies {
     implementation Dependencies.kotlinStdlib
 
-    implementation(Dependencies.lottie)
-    api(Dependencies.kotlinCoroutines)
-
-    implementation(Dependencies.moshiKotlin)
-    implementation(Dependencies.moshiAdapters)
-    kapt(Dependencies.moshiCodeGen)
-
-    implementation(Dependencies.androidxAnnotation)
-    implementation(Dependencies.androidxCollection)
+    // Compose
+    implementation platform(Dependencies.composeBom)
+    implementation Dependencies.composeUi
+    implementation Dependencies.composeMaterial
+    implementation Dependencies.composePreview
+    implementation Dependencies.lottieCompose
 }
 
 afterEvaluate {
@@ -42,7 +47,7 @@ afterEvaluate {
                 from components.release
 
                 groupId = ProjectInfo.metaLottieMavenGroup
-                artifactId = ProjectInfo.metaLottieMavenName
+                artifactId = ProjectInfo.metaLottieComposeMavenName
                 version = ProjectInfo.metaLottieMavenVersion
             }
         }
