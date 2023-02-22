@@ -1,6 +1,8 @@
+import com.stash.Dependencies
+import com.stash.ProjectInfo
+
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'maven-publish'
 apply plugin: 'kotlin-kapt'
 
@@ -18,7 +20,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.3.2"
+        kotlinCompilerExtensionVersion = "1.4.2"
     }
 
     publishing {
@@ -27,6 +29,7 @@ android {
             withJavadocJar()
         }
     }
+    namespace 'com.stash.metalottie.compose'
 }
 
 dependencies {
