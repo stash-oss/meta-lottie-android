@@ -8,7 +8,7 @@ object Dependencies {
     /**
      * Dependency Version
      */
-    const val androidBuildToolsVersion = "7.4.1"
+    const val androidBuildToolsVersion = "7.4.2"
     const val androidxAnnotationVersion = "1.2.0"
     const val androidxAppcompatVersion = "1.6.1"
     const val androidxCollectionVersion = "1.2.0"
