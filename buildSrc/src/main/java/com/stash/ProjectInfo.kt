@@ -1,3 +1,5 @@
+package com.stash
+
 object ProjectInfo {
     /**
      * Android
@@ -10,7 +12,7 @@ object ProjectInfo {
      * Library Project
      */
     const val versionMajor = 0
-    const val versionMinor = 2
+    const val versionMinor = 3
     const val versionBuild = 0
 
     const val versionCode = versionMajor * 1000000 + versionMinor * 10000 + versionBuild

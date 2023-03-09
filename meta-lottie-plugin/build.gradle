@@ -1,3 +1,6 @@
+import com.stash.Dependencies
+import com.stash.ProjectInfo
+
 apply plugin: 'java-gradle-plugin'
 apply plugin: 'kotlin'
 apply plugin: 'kotlinx-serialization'

@@ -1,3 +1,5 @@
+package com.stash
+
 /**
  * Gradle dependencies used within this library
  *
@@ -6,26 +8,26 @@ object Dependencies {
     /**
      * Dependency Version
      */
-    const val androidBuildToolsVersion = "7.2.2"
+    const val androidBuildToolsVersion = "7.4.2"
     const val androidxAnnotationVersion = "1.2.0"
-    const val androidxAppcompatVersion = "1.5.1"
-    const val androidxCollectionVersion = "1.1.0"
+    const val androidxAppcompatVersion = "1.6.1"
+    const val androidxCollectionVersion = "1.2.0"
     const val androidxComposeActivityVersion = "1.6.1"
-    const val androidxCoreKtxVersion = "1.5.0"
+    const val androidxCoreKtxVersion = "1.9.0"
     const val androidxNavigationVersion = "2.5.3"
-    const val composeBomVersion = "2022.10.00"
-    const val junitVersion = "5.8.2"
-    const val kotlinCoroutinesVersion = "1.4.2"
+    const val composeBomVersion = "2023.01.00"
+    const val junitVersion = "5.9.2"
+    const val kotlinCoroutinesVersion = "1.6.3"
     const val kotlinPoetVersion = "1.12.0"
-    const val kotlinxSerializationVersion = "1.1.0"
-    const val kotlinVersion = "1.7.20"
-    const val materialVersion = "1.7.0"
+    const val kotlinxSerializationVersion = "1.4.1"
+    const val kotlinVersion = "1.8.10"
+    const val materialVersion = "1.8.0"
     const val moshiVersion = "1.14.0"
 
     /**
      * App Dependency Version
      */
-    const val lottieVersion = "5.2.0"
+    const val lottieVersion = "6.0.0"
 
     /**
      * Internal

@@ -1,5 +1,7 @@
 import com.android.build.gradle.AppPlugin
 import com.android.build.gradle.LibraryPlugin
+import com.stash.Dependencies
+import com.stash.ProjectInfo
 
 buildscript {
     repositories {
@@ -10,7 +12,6 @@ buildscript {
         classpath Dependencies.androidBuildTools
         classpath Dependencies.kotlinGradlePlugin
         classpath Dependencies.kotlinxSerializationPlugin
-        classpath Dependencies.kotlinGradlePlugin
     }
 }
 

@@ -1,6 +1,8 @@
+import com.stash.Dependencies
+import com.stash.ProjectInfo
+
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'maven-publish'
 apply plugin: 'kotlin-kapt'
 
@@ -19,6 +21,7 @@ android {
             withJavadocJar()
         }
     }
+    namespace 'com.stash.metalottie'
 }
 
 dependencies {
